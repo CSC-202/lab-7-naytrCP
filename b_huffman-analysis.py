@@ -107,46 +107,87 @@ MAX_N: int = int(128 * 3 / 2)
 
 # PLOT 1
 ## POKEMON
+data: str = LIKE_THE_MOVIES_LYRICS
 ratios: list = list()
-for i in range(1, MAX_N):
+for i in range(1, len(data)):
+    x = data[0:i]
     sub_message = LIKE_THE_MOVIES_LYRICS[0:i]
-    _, _, ratio = huffman(sub_message)
+    compressed, coding, ratio = huffman(sub_message)
     ratios.append(ratio)
-
+    min_ratio =min(ratios)
+    min_idx = ratios.index(min_ratio)
+    plt.plot(ratios[:MAX_N], label=f'LIKE_THE_MOVIES_LYRICS(n={len(coding)})', color ='red', linestyle='dashdot')
+    
 ## JIGGLE JIGGLE
+data: str = KILL_BILL_LYRICS
 ratios: list = list()
-for i in range(1, MAX_N):
+for i in range(1, len(data)):
+    x = data[0:i]
     sub_message = KILL_BILL_LYRICS[0:i]
-    _, _, ratio = huffman(sub_message)
+    compressed, coding, ratio = huffman(sub_message)
     ratios.append(ratio)
+    min_ratio =min(ratios)
+    min_idx = ratios.index(min_ratio)
+    plt.plot(ratios[:MAX_N], label=f'KILL_BILL_LYRICS(n={len(coding)})', color ='green', linestyle='dashdot')
 
 ## ALPHABET
+data: str = MA_BELLE_EVANGELINE_LYRICS
 ratios: list = list()
-for i in range(1, MAX_N):
+for i in range(1, len(data)):
+    x = data[0:i]
     sub_message = MA_BELLE_EVANGELINE_LYRICS[0:i]
-    _, _, ratio = huffman(sub_message)
+    compressed, coding, ratio = huffman(sub_message)
     ratios.append(ratio)
+    min_ratio =min(ratios)
+    min_idx = ratios.index(min_ratio)
+    plt.plot(ratios[:MAX_N], label=f'MA_BELLE_EVANGELINE_LYYRICS(n={len(coding)})', color ='blue', linestyle='dashdot')
+plt.legend()
+plt.gcf().supylabel("compression %")
+
 
 # PLOT 2
 plt.subplot(2, 1, 2)
 
 ## SITH CODE
+data: str = ANNE_FRANK
 ratios: list = list()
-for i in range(1, MAX_N):
+for i in range(1, len(data)):
+    x = data[0:i]
     sub_message = ANNE_FRANK[0:i]
-    _, _, ratio = huffman(sub_message)
+    compressed, coding, ratio = huffman(sub_message)
     ratios.append(ratio)
+    min_ratio =min(ratios)
+    min_idx = ratios.index(min_ratio)
+    plt.plot(ratios[:MAX_N], label=f'ANNE_FRANK (n={len(coding)})', color ='red', linestyle='dashdot')
+
 
 ## GREEN LATERN'S OATH
+data: str = MULAN_1
 ratios: list = list()
-for i in range(1, MAX_N):
+for i in range(1, len(data)):
+    x = data[0:i]
     sub_message = MULAN_1[0:i]
-    _, _, ratio = huffman(sub_message)
+    compressed, coding, ratio = huffman(sub_message)
     ratios.append(ratio)
-
+    min_ratio =min(ratios)
+    min_idx = ratios.index(min_ratio)
+    plt.plot(ratios[:MAX_N], label=f'MULAN_1 (n={len(coding)})', color ='green', linestyle='dashdot')
 ## JEDI CODE
+data: str = MEX_INSP
 ratios: list = list()
-for i in range(1, MAX_N):
+for i in range(1, len(data)):
+    x = data[0:i]
     sub_message = MEX_INSP[0:i]
-    _, _, ratio = huffman(sub_message)
+    compressed, coding, ratio = huffman(sub_message)
     ratios.append(ratio)
+    min_ratio =min(ratios)
+    min_idx = ratios.index(min_ratio)
+    plt.plot(ratios[:MAX_N], label=f'MEX_INSP (n={len(coding)})', color ='blue', linestyle='dashdot')
+
+plt.xlabel("length of message")
+plt.legend()
+plt.savefig('./figs/lab7_analysis_Rubalcava.png')
+plt.show()
+
+    
+    
